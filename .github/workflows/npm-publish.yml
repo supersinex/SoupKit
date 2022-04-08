@@ -15,8 +15,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm install
-      - run: npm test
+      - run: yarn install
+      - run: yarn test
 
   publish-npm:
     needs: build
@@ -27,8 +27,8 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - run: npm install
-      - run: npm run build
+      - run: yarn install
+      - run: yarn build
       - run: npm publish ./dist/soup-kit
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
